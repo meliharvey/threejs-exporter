@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Dynamic;
 
 using Grasshopper.Kernel;
@@ -9,14 +8,14 @@ using Newtonsoft.Json;
 
 namespace glTF_exporter
 {
-    public class MeshBasicMaterial : GH_Component
+    public class MeshNormalMaterial : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the MeshBasicMaterial class.
+        /// Initializes a new instance of the MeshNormalMaterial class.
         /// </summary>
-        public MeshBasicMaterial()
-          : base("MeshBasicMaterial", "BasicMat",
-              "Create a MeshBasicMaterial.",
+        public MeshNormalMaterial()
+          : base("MeshNormalMaterial", "NormalMat",
+              "Create a MeshNormalMaterial.",
               "Threejs", "Materials")
         {
         }
@@ -26,7 +25,6 @@ namespace glTF_exporter
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Color", "C", "Add a color", GH_ParamAccess.item, Color.CornflowerBlue);
             pManager.AddBooleanParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item, false);
             pManager.AddTextParameter("WireframeLineJoin", "J", "Style of wireframe joins ('round', 'miter', or 'bevel'", GH_ParamAccess.item, "round");
             pManager.AddNumberParameter("WireframeLineWidth", "L", "The width of the wireframe line", GH_ParamAccess.item, 1);
@@ -47,30 +45,23 @@ namespace glTF_exporter
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            Color color = Color.White;
             bool wireframe = false;
             string wireframeLinejoin = "round";
             double wireframeLinewidth = 1;
 
-            DA.GetData(0, ref color);
-            DA.GetData(1, ref wireframe);
-            DA.GetData(2, ref wireframeLinejoin);
-            DA.GetData(3, ref wireframeLinewidth);
-
-            
+            DA.GetData(0, ref wireframe);
+            DA.GetData(1, ref wireframeLinejoin);
+            DA.GetData(2, ref wireframeLinewidth);
 
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
-            material.type = "MeshBasicMaterial";
-
-            string hexColor = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
-            material.color = Convert.ToInt32(hexColor, 16);
+            material.type = "MeshNormalMaterial";
 
             material.wireframe = wireframe;
             material.wireframeLinejoin = wireframeLinejoin;
             material.wireframeLinewidth = wireframeLinewidth;
 
-            //Wrap the material
+            /// Wrap the material
             MaterialWrapper wrapper = new MaterialWrapper(material);
 
             string JSON = JsonConvert.SerializeObject(material);
@@ -88,7 +79,7 @@ namespace glTF_exporter
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshBasicMaterial;
+                return Properties.Resources.MeshNormalMaterial;
             }
         }
 
@@ -97,7 +88,7 @@ namespace glTF_exporter
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("87793bf9-80e8-44e7-aa29-59c7c138511b"); }
+            get { return new Guid("d35efd52-3d80-4eac-865f-b3f8597214e3"); }
         }
     }
 }

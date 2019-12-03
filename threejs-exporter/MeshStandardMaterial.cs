@@ -58,8 +58,8 @@ namespace glTF_exporter
             double metalness = 0.5;
             double emissive = 0;
             bool wireframe = false;
-            string wireframeLineJoin = "round";
-            double wireframeLineWidth = 1;
+            string wireframeLinejoin = "round";
+            double wireframeLinewidth = 1;
 
             DA.GetData(0, ref color);
             DA.GetData(1, ref opacity);
@@ -67,8 +67,8 @@ namespace glTF_exporter
             DA.GetData(3, ref metalness);
             DA.GetData(4, ref emissive);
             DA.GetData(5, ref wireframe);
-            DA.GetData(6, ref wireframeLineJoin);
-            DA.GetData(7, ref wireframeLineWidth);
+            DA.GetData(6, ref wireframeLinejoin);
+            DA.GetData(7, ref wireframeLinewidth);
 
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
@@ -83,8 +83,8 @@ namespace glTF_exporter
             material.metalness = metalness;
             material.emissive = emissive;
             material.wireframe = wireframe;
-            material.wireframeLineJoin = wireframeLineJoin;
-            material.wireframeLineWidth = wireframeLineWidth;
+            material.wireframeLinejoin = wireframeLinejoin;
+            material.wireframeLinewidth = wireframeLinewidth;
 
             /// Wrap the material
             MaterialWrapper wrapper = new MaterialWrapper(material);

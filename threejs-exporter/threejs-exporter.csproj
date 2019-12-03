@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Classes.cs" />
     <Compile Include="MeshBasicMaterial.cs" />
+    <Compile Include="MeshNormalMaterial.cs" />
     <Compile Include="MeshStandardMaterial.cs" />
     <Compile Include="ExportJSON.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
