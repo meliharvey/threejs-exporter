@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Drawing;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Dynamic;
 
 using Grasshopper.Kernel;
@@ -9,14 +9,14 @@ using Newtonsoft.Json;
 
 namespace glTF_exporter
 {
-    public class MeshStandardMaterial : GH_Component
+    public class MeshBasicMaterial : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the ExportGLTF class.
+        /// Initializes a new instance of the MeshBasicMaterial class.
         /// </summary>
-        public MeshStandardMaterial()
-          : base("MeshStandardMaterial", "StandardMat",
-              "Create a MeshStandardMaterial.",
+        public MeshBasicMaterial()
+          : base("MeshBasicMaterial", "BasicMat",
+              "Create a MeshBasicMaterial.",
               "Threejs", "Materials")
         {
         }
@@ -26,11 +26,7 @@ namespace glTF_exporter
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Color", "C", "Material's color", GH_ParamAccess.item, Color.CornflowerBlue);
-            pManager.AddNumberParameter("Opacity", "O", "Material's opacity (0 = transparent, 1 = opaque)", GH_ParamAccess.item, 1);
-            pManager.AddNumberParameter("Roughness", "R", "Material's roughness", GH_ParamAccess.item, 1);
-            pManager.AddNumberParameter("Metalness", "M", "Material's metalness", GH_ParamAccess.item, 0.5);
-            pManager.AddNumberParameter("Emissive", "E", "Material's emissiveness", GH_ParamAccess.item, 0);
+            pManager.AddColourParameter("Color", "C", "Add a color", GH_ParamAccess.item, Color.CornflowerBlue);
             pManager.AddBooleanParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item, false);
             pManager.AddTextParameter("WireframeLineJoin", "J", "Style of wireframe joins ('round', 'miter', or 'bevel'", GH_ParamAccess.item, "round");
             pManager.AddNumberParameter("WireframeLineWidth", "L", "The width of the wireframe line", GH_ParamAccess.item, 1);
@@ -51,42 +47,30 @@ namespace glTF_exporter
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            
             Color color = Color.White;
-            double opacity = 1;
-            double roughness = 1;
-            double metalness = 0.5;
-            double emissive = 0;
             bool wireframe = false;
             string wireframeLineJoin = "round";
             double wireframeLineWidth = 1;
 
             DA.GetData(0, ref color);
-            DA.GetData(1, ref opacity);
-            DA.GetData(2, ref roughness);
-            DA.GetData(3, ref metalness);
-            DA.GetData(4, ref emissive);
-            DA.GetData(5, ref wireframe);
-            DA.GetData(6, ref wireframeLineJoin);
-            DA.GetData(7, ref wireframeLineWidth);
+            DA.GetData(1, ref wireframe);
+            DA.GetData(2, ref wireframeLineJoin);
+            DA.GetData(3, ref wireframeLineWidth);
+
+            
 
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
-            material.type = "MeshStandardMaterial";
+            material.type = "MeshBasicMaterial";
 
             string hexColor = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             material.color = Convert.ToInt32(hexColor, 16);
 
-            material.transparent = true;
-            material.opacity = opacity;
-            material.roughness = roughness;
-            material.metalness = metalness;
-            material.emissive = emissive;
             material.wireframe = wireframe;
             material.wireframeLineJoin = wireframeLineJoin;
             material.wireframeLineWidth = wireframeLineWidth;
 
-            /// Wrap the material
+            //Wrap the material
             MaterialWrapper wrapper = new MaterialWrapper(material);
 
             string JSON = JsonConvert.SerializeObject(material);
@@ -104,7 +88,7 @@ namespace glTF_exporter
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshStandardMaterial;
+                return Properties.Resources.MeshBasicMaterial;
             }
         }
 
@@ -113,7 +97,7 @@ namespace glTF_exporter
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("52c8142d-9f07-4ceb-aca5-daef08d10a5c"); }
+            get { return new Guid("87793bf9-80e8-44e7-aa29-59c7c138511b"); }
         }
     }
 }

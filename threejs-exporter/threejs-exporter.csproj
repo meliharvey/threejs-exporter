@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.cs" />
+    <Compile Include="MeshBasicMaterial.cs" />
     <Compile Include="MeshStandardMaterial.cs" />
     <Compile Include="ExportJSON.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -71,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelativePath.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="threejs-exporterInfo.cs" />
     <Compile Include="Mesh.cs" />
@@ -86,16 +88,34 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\threejs-exporter-icons-04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Mesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeshBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeshNormalMaterial.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MeshStandardMaterial.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\RelativePath.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Scene.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\threejs-exporter-icons-04.png" />
+    <None Include="Resources\MeshPhongMaterial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -106,7 +126,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\dee\AppData\Roaming\Grasshopper\Libraries\GLTFexporter.gha"
+    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\dee\AppData\Roaming\Grasshopper\Libraries\ThreejsExporter.gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

@@ -121,7 +121,7 @@ namespace glTF_exporter
                     faces.Add(mesh.Faces.GetFace(i).C);
                 }
 
-                index.type = "Uint16Array";
+                index.type = "Uint32Array";
                 index.array = faces;
 
                 dynamic data = new ExpandoObject();

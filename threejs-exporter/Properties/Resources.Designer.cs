@@ -73,6 +73,16 @@ namespace glTF_exporter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Line {
+            get {
+                object obj = ResourceManager.GetObject("Line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mesh {
             get {
                 object obj = ResourceManager.GetObject("Mesh", resourceCulture);
@@ -83,9 +93,49 @@ namespace glTF_exporter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MeshBasicMaterial {
+            get {
+                object obj = ResourceManager.GetObject("MeshBasicMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MeshNormalMaterial {
+            get {
+                object obj = ResourceManager.GetObject("MeshNormalMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MeshPhongMaterial {
+            get {
+                object obj = ResourceManager.GetObject("MeshPhongMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MeshStandardMaterial {
             get {
                 object obj = ResourceManager.GetObject("MeshStandardMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RelativePath {
+            get {
+                object obj = ResourceManager.GetObject("RelativePath", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
